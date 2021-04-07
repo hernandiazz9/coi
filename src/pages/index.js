@@ -1,29 +1,55 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import styled from '@emotion/styled'
+import {css} from '@emotion/react'
+import ContenidoInicio from "../components/contenidoInicio"
+import ImagenHome from "../components/imagenHome"
+import useProductos from '../hooks/useProductos'
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import ProductoPreview from "../components/ProductoPreview"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
+
+const ListadoProducto = styled.ul`
+  max-width: 800px;
+  width:95%;
+  margin: 4rem auto 0 auto;
+  
+  @media (min-width:768px){
+    display:grid;
+    grid-template-columns: 1fr 1fr  ;
+    column-gap:3rem;
+  }
+`
+
+
+const IndexPage = () => {
+
+  const productos = useProductos();
+  // console.log(productos);
+
+  return(
+
+    <Layout>
+      <ImagenHome/>
+      <ContenidoInicio/>
+      <h2
+        css={css`
+          text-align:center;
+          margin-top:5rem;
+          font-size:3rem;
+        `}
+      >Nuestros Productos</h2>
+      <ListadoProducto>
+        {productos.map(productos=>(
+          <ProductoPreview
+            key={productos.id}
+            productos={productos}
+          />
+        ))}
+      </ListadoProducto>
+  
+    </Layout>  
+  ) 
+}
 
 export default IndexPage

@@ -5,6 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    'gatsby-plugin-emotion',
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
@@ -25,12 +26,15 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-gatsby-cloud`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-source-datocms',
+      options:{
+        apiToken:'b9e80d0a2c3efffc7a4f2ff7a59525',
+      }
+    },
   ],
 }
