@@ -20,7 +20,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   productos.forEach(producto => {
       actions.createPage({
-          path: `/${producto.slug}`,
+          path: `/productos/${producto.slug}`,
           component: path.resolve('./src/components/producto.js'),
           context: {
               slug: producto.slug

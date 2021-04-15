@@ -32,6 +32,7 @@ const Navegacion = () => {
         <Nav>
             <NavLink activeClassName='pagina-actual' to={ '/' }>Inicio</NavLink>
             <NavLink activeClassName='pagina-actual' to={ '/nosotros' }>Nosotros</NavLink>
+            <NavLink activeClassName='pagina-actual' to={ '/productos' }>Productos</NavLink>
             <NavLink activeClassName='pagina-actual' to={ '/contacto' }>Contacto</NavLink>
         </Nav>
     )

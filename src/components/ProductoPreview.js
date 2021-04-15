@@ -1,53 +1,61 @@
-import React from 'react'
-import Image from 'gatsby-image'
-import {css} from '@emotion/react'
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
+import React from "react"
+import Image from "gatsby-image"
+// import { css } from "@emotion/react"
+// import styled from "@emotion/styled"
+import { Link } from "gatsby"
+// import { makeStyles } from '@material-ui/core/styles';
 
-const Boton = styled(Link)`
-    margin-top: 2rem;
-    padding: 1rem;
-    background-color: rgba(44, 62, 80, .8);
-    width:100%;
-    color:#fff;
-    display:block;
-    text-decoration:none;
-    text-transform:uppercase;
-    font-weight:400; 
-    text-align:center;
-`
+import Grid from '@material-ui/core/Grid';
 
 
-const ProductoPreview = ({productos}) => {
 
-    const {contenido, imagen, titulo, slug} = productos;
+const ProductoPreview = ({ productos }) => {
 
-    return (
-        <div
-            css={css`
-                border: 1px solid #e1e1e1;
-                margin-bottom:2rem;
-            `}
-        >
-            <Image
-                fluid={imagen.fluid}
-            />
-            <div
-                css={css`
-                    padding:3rem;
-                `}
-            >
-                <h3
-                    css={css`
-                        font-size:3rem;
-                    `}
-                >{titulo}</h3>
-                <p>{contenido}</p>
-                <Boton to={slug}>Ver Producto</Boton>
-            </div>
-            
+  const { contenido, imagen, titulo, slug } = productos
+  
+
+  return (
+    
+    <>
+      <Grid container spacing={1}>
+        <Grid container item xs={12} spacing={3}>
+          <Grid item xs={4}>
+            <p>h</p>
+          </Grid>
+          <Grid item xs={4}>
+            <p>h</p>
+          </Grid>
+          <Grid item xs={4}>
+            <p>h</p>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      <div className="col s12 m6 l3  ">
+        <div className="card large">
+          <div className="card-image waves-effect waves-block waves-light">
+            <p class="activator"> {imagen && <Image fluid={imagen.fluid} />}</p>
+          </div>
+          <div className="card-content">
+            <span className="card-title activator grey-text text-darken-4">
+              {titulo}
+              <i className="material-icons right">O</i>
+            </span>
+            <Link to={`${slug}`} class="waves-effect waves-light btn">
+              Ver Producto
+            </Link>
+          </div>
+          <div className="card-reveal">
+            <span className="card-title grey-text text-darken-4">
+              {titulo}
+              <i class="material-icons right">X</i>
+            </span>
+            <p>{contenido}</p>
+          </div>
         </div>
-    )
+      </div>
+    </>
+  )
 }
 
 export default ProductoPreview
